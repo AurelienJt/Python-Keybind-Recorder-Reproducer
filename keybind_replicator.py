@@ -1,6 +1,7 @@
 import json
 import os
 import pygame
+from datetime import datetime
 
 
 class KeybindReplicator:
@@ -133,8 +134,10 @@ class KeybindReplicator:
         return _code_str.join(self._code_blocks)
 
     def _handle_file_path(self, file_path: str) -> str:
-        if file_path == "":
-            raise ValueError("filepath empty, aborting.")
+        if file_path == "abort":
+            raise ValueError("Aborting.")
+        elif file_path == "":
+            file_path = os.path.join("Recordings",str(datetime.now()))
         if "." not in file_path:
             file_path += ".pyw"
         if not os.path.exists(os.path.dirname(file_path)):
@@ -158,9 +161,10 @@ class KeybindReplicator:
         _code_str: str = self._block2codes_str()
         with open(_file_path, "w", encoding="utf-8") as file:
             file.write(_code_str)
+        print(f"Created recordings file at: {_file_path}")
         return _code_str
 
 
 keybind_handler = KeybindReplicator()
 print(keybind_handler)
-keybind_handler.dump_to_file(input("Please enter file destination, leave empty to abort: "))
+keybind_handler.dump_to_file(input("Please enter file destination, type 'abort' to abort: "))
