@@ -167,9 +167,9 @@ class KeybindReplicator:
         print(f"Created recordings file at: {_file_path}")
         return _code_str
 
-
-keybind_handler = KeybindReplicator()
-print(keybind_handler)
-keybind_handler.dump_to_file(
-    input("Please enter file destination, type 'abort' to abort: ")
-)
+if __name__ == "__main__":
+    keybind_handler = KeybindReplicator()
+    print(keybind_handler)
+    keybind_handler.dump_to_file(
+        input("Please enter file destination, type 'abort' to abort: ")
+    )
