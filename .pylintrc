@@ -1,5 +1,0 @@
-[MESSAGES CONTROL]
-
-disable=
-    no-member,
-    missing-module-docstring
