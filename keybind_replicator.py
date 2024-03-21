@@ -45,7 +45,7 @@ class KeybindReplicator:
         key_identifier: dict = {"up": "up", "down": "down"}
         _used_keys: list = []
         _tracking: bool = True
-        print("Tracking...please make sure pygame window is selected.")
+        print("Tracking...please make sure pygame window is selected. Press escape or close to window to close recording.")
         while _tracking:
             self._window_handler()
             for event in pygame.event.get():
