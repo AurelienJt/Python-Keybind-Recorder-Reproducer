@@ -1,7 +1,7 @@
 import json
 import os
-import pygame
 from datetime import datetime
+import pygame
 
 
 class KeybindReplicator:
@@ -34,7 +34,7 @@ class KeybindReplicator:
             return json.load(file)
 
     def _keybind_tracker(self) -> list[tuple[str, str]]:
-        """Tracks key inputs while active. Escape tracking with esc or closing the pygame window.
+        """Tracks key inputs while active. Stop recording with esc or by closing the pygame window.
 
         Returns
         -------
@@ -46,7 +46,8 @@ class KeybindReplicator:
         _used_keys: list = []
         _tracking: bool = True
         print(
-            "Tracking...please make sure pygame window is selected. Press escape or close to window to close recording."
+            ("Tracking...please make sure pygame window is selected. " \
+            "Press escape or close to window to stop recording.")
         )
         while _tracking:
             self._window_handler()
