@@ -133,6 +133,8 @@ class KeybindReplicator:
         return _code_str.join(self._code_blocks)
 
     def _handle_file_path(self, file_path: str) -> str:
+        if file_path == "":
+            raise ValueError("filepath empty, aborting.")
         if "." not in file_path:
             file_path += ".pyw"
         if not os.path.exists(os.path.dirname(file_path)):
@@ -161,4 +163,4 @@ class KeybindReplicator:
 
 keybind_handler = KeybindReplicator()
 print(keybind_handler)
-keybind_handler.dump_to_file(input("Please enter file destination: "))
+keybind_handler.dump_to_file(input("Please enter file destination, leave empty to abort: "))
