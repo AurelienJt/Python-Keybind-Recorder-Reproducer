@@ -1,7 +1,0 @@
-[
-    "import pyautogui, sys",
-    "",
-    "",
-    "sys.exit()"
-]
-
