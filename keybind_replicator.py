@@ -9,9 +9,9 @@ class KeybindReplicator:
 
     def __init__(self):
         self._dir_pth = os.path.dirname(os.path.abspath(__file__))
-        self._pyblock_pth = os.path.join(self._dir_pth, "pyblocks.json")
+        self._pyblock_pth = os.path.join(self._dir_pth, "Data", "pyblocks.json")
         self._trascriber_pth = os.path.join(
-            self._dir_pth, "pygame2pyau_transcription.json"
+            self._dir_pth, "Data", "pygame2pyau_transcription.json"
         )
         self._window_dimensions: tuple[int, int] = (300, 200)
         self._window_title: str = "Recording..."
@@ -34,7 +34,7 @@ class KeybindReplicator:
             return json.load(file)
 
     def _keybind_tracker(self) -> list[tuple[str, str]]:
-        """Tracks keybind inputs while active. Escape tracking with esc.
+        """Tracks key inputs while active. Escape tracking with esc or closing the pygame window.
 
         Returns
         -------
@@ -45,7 +45,9 @@ class KeybindReplicator:
         key_identifier: dict = {"up": "up", "down": "down"}
         _used_keys: list = []
         _tracking: bool = True
-        print("Tracking...please make sure pygame window is selected. Press escape or close to window to close recording.")
+        print(
+            "Tracking...please make sure pygame window is selected. Press escape or close to window to close recording."
+        )
         while _tracking:
             self._window_handler()
             for event in pygame.event.get():
@@ -137,7 +139,7 @@ class KeybindReplicator:
         if file_path == "abort":
             raise ValueError("Aborting.")
         elif file_path == "":
-            file_path = os.path.join("Recordings",str(datetime.now()))
+            file_path = os.path.join("Recordings", str(datetime.now()))
         if "." not in file_path:
             file_path += ".pyw"
         if not os.path.exists(os.path.dirname(file_path)):
@@ -167,4 +169,6 @@ class KeybindReplicator:
 
 keybind_handler = KeybindReplicator()
 print(keybind_handler)
-keybind_handler.dump_to_file(input("Please enter file destination, type 'abort' to abort: "))
+keybind_handler.dump_to_file(
+    input("Please enter file destination, type 'abort' to abort: ")
+)
