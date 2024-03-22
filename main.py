@@ -1,4 +1,7 @@
+# pylint: disable=no-member
+# pylint: disable=missing-module-docstring
 import json
+import sys
 import os
 from datetime import datetime
 import pygame
@@ -19,11 +22,13 @@ class KeybindReplicator:
             self._window_dimensions
         )
         pygame.display.set_caption(self._window_title)
+        self._destination_path: str = self._handle_cli_args()
         self._insertion_index: int = 2
         self._code_blocks: list = self._load_from_json(self._pyblock_pth)
         self._transcription_table: dict = self._load_from_json(self._trascriber_pth)
         self._target_keys: list = self._keybind_tracker()
         self._generate_code()
+        self.dump_to_file(self._handle_cli_args())
 
     def __repr__(self) -> str:
         _newline = "\n"
@@ -32,6 +37,14 @@ class KeybindReplicator:
     def _load_from_json(self, _path: str):
         with open(_path, "r", encoding="utf-8") as file:
             return json.load(file)
+
+    def _handle_cli_args(self) -> str:
+        if len(sys.argv) == 1:
+            return ""
+        elif sys.argv[1] == "help":
+            print("Run with: python main.py <filepath>")
+            sys.exit()
+        return sys.argv[1]
 
     def _keybind_tracker(self) -> list[tuple[str, str]]:
         """Tracks key inputs while active. Stop recording with esc or by closing the pygame window.
@@ -46,8 +59,10 @@ class KeybindReplicator:
         _used_keys: list = []
         _tracking: bool = True
         print(
-            ("Tracking...please make sure pygame window is selected. " \
-            "Press escape or close to window to stop recording.")
+            (
+                "Tracking...please make sure pygame window is selected. "
+                "Press escape or close to window to stop recording."
+            )
         )
         while _tracking:
             self._window_handler()
@@ -139,12 +154,15 @@ class KeybindReplicator:
     def _handle_file_path(self, file_path: str) -> str:
         if file_path == "abort":
             raise ValueError("Aborting.")
-        elif file_path == "":
+        if file_path == "":
             file_path = os.path.join("Recordings", str(datetime.now()))
         if "." not in file_path:
             file_path += ".pyw"
         if not os.path.exists(os.path.dirname(file_path)):
-            os.makedirs(os.path.dirname(file_path))
+            try:
+                os.makedirs(os.path.dirname(file_path))
+            except FileNotFoundError:
+                pass
         return file_path
 
     def dump_to_file(self, file_path) -> str:
@@ -167,9 +185,6 @@ class KeybindReplicator:
         print(f"Created recordings file at: {_file_path}")
         return _code_str
 
+
 if __name__ == "__main__":
     keybind_handler = KeybindReplicator()
-    print(keybind_handler)
-    keybind_handler.dump_to_file(
-        input("Please enter file destination, type 'abort' to abort: ")
-    )
