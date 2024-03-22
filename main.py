@@ -142,10 +142,14 @@ class KeybindReplicator:
         return f"pydirectinput.keyUp('{_key_up_event[1]}')"
 
     def _pygame2pyautogui(self, pygame_keynames: list) -> list:
-        return [
-            (key_name[0], self._transcription_table.get(key_name[1]), key_name[2])
-            for key_name in pygame_keynames
-        ]
+        _translated_keys: list = []
+        for key_name in pygame_keynames:
+            if self._transcription_table.get(key_name[1]) is not None:
+                _translated_keys.append((key_name[0], self._transcription_table.get(key_name[1]), key_name[2]))
+            else:
+                raise ValueError(f"Missing translation for: {pygame_keynames}")
+        return _translated_keys
+
 
     def _block2codes_str(self) -> str:
         _code_str = "\n"
