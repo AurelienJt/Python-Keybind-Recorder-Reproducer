@@ -156,6 +156,8 @@ class KeybindReplicator:
             raise ValueError("Aborting.")
         if file_path == "":
             file_path = os.path.join("Recordings", datetime.now().strftime("%d_%m_%d-%H_%M_%S"))
+        elif not file_path.startswith("Recordings"):
+            file_path = os.path.join("Recordings", file_path)
         if "." not in file_path:
             file_path += ".pyw"
         if not os.path.exists(os.path.dirname(file_path)):
