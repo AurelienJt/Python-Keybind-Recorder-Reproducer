@@ -187,4 +187,4 @@ class KeybindReplicator:
 
 
 if __name__ == "__main__":
-    keybind_handler = KeybindReplicator()
+    keybind_rep = KeybindReplicator()
