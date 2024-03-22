@@ -41,7 +41,7 @@ class KeybindReplicator:
     def _handle_cli_args(self) -> str:
         if len(sys.argv) == 1:
             return ""
-        elif sys.argv[1] == "help":
+        if sys.argv[1] == "help":
             print("Run with: python main.py <filepath>")
             sys.exit()
         return sys.argv[1]
@@ -61,7 +61,7 @@ class KeybindReplicator:
         print(
             (
                 "Tracking...please make sure pygame window is selected. "
-                "Press escape or close to window to stop recording."
+                "Press escape or close the window to stop recording."
             )
         )
         while _tracking:
