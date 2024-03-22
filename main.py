@@ -136,10 +136,10 @@ class KeybindReplicator:
         raise ValueError(f"Unsupported key_event: {_key_event}")
 
     def _key_down_event_code(self, _key_down_event) -> str:
-        return f"pyautogui.keydown('{_key_down_event[1]}')"
+        return f"pydirectinput.keyDown('{_key_down_event[1]}')"
 
     def _key_up_event_code(self, _key_up_event) -> str:
-        return f"pyautogui.keyup('{_key_up_event[1]}')"
+        return f"pydirectinput.keyUp('{_key_up_event[1]}')"
 
     def _pygame2pyautogui(self, pygame_keynames: list) -> list:
         return [

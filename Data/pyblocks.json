@@ -1,5 +1,5 @@
 [
-    "import pyautogui, sys",
+    "import pydirectinput, sys",
     "",
     "",
     "sys.exit()"
