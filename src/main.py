@@ -148,7 +148,7 @@ class KeybindReplicator:
             if self._transcription_table.get(key_name[1]) is not None:
                 _translated_keys.append((key_name[0], self._transcription_table.get(key_name[1]), key_name[2]))
             else:
-                raise ValueError(f"Missing translation for: {pygame_keynames}")
+                raise ValueError(f"Missing translation for: {key_name}")
         return _translated_keys
 
 
