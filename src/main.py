@@ -24,7 +24,7 @@ class KeybindReplicator:
         )
         pygame.display.set_caption(self._window_title)
         self._destination_path: str = self._handle_cli_args()
-        self._insertion_index: int = 2
+        self._insertion_index: int = 10
         self._code_blocks: list = self._load_from_json(self._pyblock_pth)
         self._transcription_table: dict = self._load_from_json(self._trascriber_pth)
         self._target_keys: list = self._keybind_tracker()
@@ -191,6 +191,7 @@ class KeybindReplicator:
             file.write(_code_str)
         print(f"Created recordings file at: {_file_path}")
         return _code_str
+
 
 
 if __name__ == "__main__":
