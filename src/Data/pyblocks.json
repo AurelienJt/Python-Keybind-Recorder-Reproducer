@@ -1,8 +1,9 @@
 [
     "import pydirectinput, sys",
+    "",
     "pydirectinput.KEYBOARD_MAPPING['num0'] = 0x52",
-    "pydirectinput.KEYBOARD_MAPPING['num1'] = 0x50",
-    "pydirectinput.KEYBOARD_MAPPING['num2'] = 0x48",
+    "pydirectinput.KEYBOARD_MAPPING['num1'] = 0x4F",
+    "pydirectinput.KEYBOARD_MAPPING['num2'] = 0x50",
     "pydirectinput.KEYBOARD_MAPPING['num3'] = 0x51",
     "pydirectinput.KEYBOARD_MAPPING['num4'] = 0x4B",
     "pydirectinput.KEYBOARD_MAPPING['num5'] = 0x4C",
