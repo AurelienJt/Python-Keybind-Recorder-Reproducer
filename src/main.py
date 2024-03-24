@@ -7,6 +7,7 @@ from datetime import datetime
 import pygame
 
 
+
 class KeybindReplicator:
     """Class to generate scripts replicating recorded keybinds"""
 
