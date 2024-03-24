@@ -1,5 +1,5 @@
 # Python Keybind Reproducer
-This program allows users to record keybinds and reproduce them by executing a python script, generated from a recording of the pressed keybinds. It uses the pydirectinput library in order to use scancodes instead of VK's.
+This program allows users to record keybinds and reproduce them by executing a python script, generated from a recording of the pressed keybinds. It uses the pydirectinput library in order to use scancodes instead of VK's. **Only works for windows.**
 ## How it Works
 1. Install dependencies using pip. After cd'ing to the project directory run: `pip install -r requirements.txt`
 2. Launch `main.py`
