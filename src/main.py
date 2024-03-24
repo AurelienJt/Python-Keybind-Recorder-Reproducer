@@ -83,7 +83,7 @@ class KeybindReplicator:
                     elif event.type == pygame.KEYUP:
                         identifier = key_identifier["up"]
                     _used_keys.append(
-                        (identifier, pygame.key.name(event.key, False), event.key)
+                        (identifier, pygame.key.name(event.key, False).lower(), event.key)
                     )
         return _used_keys
 
