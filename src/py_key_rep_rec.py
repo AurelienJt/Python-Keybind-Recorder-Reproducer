@@ -13,9 +13,9 @@ class KeybindReplicator:
 
     def __init__(self):
         self._dir_pth = os.path.dirname(os.path.abspath(__file__))
-        self._pyblock_pth = os.path.join(self._dir_pth, "Data", "pyblocks.json")
+        self._pyblock_pth = os.path.join(self._dir_pth, "data", "pyblocks.json")
         self._trascriber_pth = os.path.join(
-            self._dir_pth, "Data", "pygame2pyau_transcription.json"
+            self._dir_pth, "data", "pygame2pyau_transcription.json"
         )
         self._window_dimensions: tuple[int, int] = (300, 200)
         self._window_title: str = "Recording..."
