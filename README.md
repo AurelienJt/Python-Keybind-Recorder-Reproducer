@@ -3,7 +3,7 @@ This program allows users to record keybinds and reproduce them by executing a p
 ## How it Works
 Make sure to install the latest release from the release tab.
 1. Open a new powershell/command prompt window.
-2. Navigate to the project directory: `Path/To/The/Project/Python-Keybind-Recorder-Reproducer/`
+2. Navigate to the project directory: `cd Path/To/The/Project/Python-Keybind-Recorder-Reproducer/`
 3. Run: `pip install -r requirements.txt` in order to install the dependencies.
 4. Navigate into the `/src/` folder.
 5. Launch `py_key_rep_rec.py` with `python py_key_rec_rep.py <filepath>` Leave `<filepath>` empty to create a `/Recordings/` directory.
